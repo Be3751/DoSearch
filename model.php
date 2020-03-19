@@ -102,7 +102,7 @@ try{
     $subject_d = $rec['d'];
     $subject_f = $rec['f'];
     // floatvalで浮動小数点に変換
-    $per_get_credit = 100.0 - (floatval($subject_a) + floatval($subject_b) + floatval($subject_c) + floatval(($subject_d)));
+    $per_get_credit = floatval($subject_a) + floatval($subject_b) + floatval($subject_c) + floatval($subject_d);
 
     $pdo = null;
 }
