@@ -59,7 +59,7 @@ try{
                 $course = 'psychology';
                 break;
             case 'グローバル・コミュニケーション学部':
-                $course = 'glo_commu';
+                $course = 'glo_com';
                 break;
             case 'グローバル＿地域文化学部':
                 $course = 'glo_rigion';
