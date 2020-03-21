@@ -20,58 +20,62 @@ try{
     // if(isset($_GET['code']) and isset($_GET['name'])){
     //     $sql = "SELECT semester,registers,a,b,c,d,f FROM theology WHERE code=? AND name=? ";
     // }
+    if(isset($_GET['year'])){
+        $subject_year = $_GET['year'];
+    }
+
     if(isset($_GET['course'])){
         switch($_GET['course']){
             case '神学部':
-                $course = 'theology';
+                $course = 'theology'.$subject_year;
                 break;
             case '文学部':
-                $course = 'literature';
+                $course = 'literature'.$subject_year;
                 break;
             case '法学部':
-                $course = 'law';
+                $course = 'law'.$subject_year;
                 break;
             case '経済学部':
-                $course = 'economics';
+                $course = 'economics'.$subject_year;
                 break;
             case '商学部':
-                $course = 'commerce';
+                $course = 'commerce'.$subject_year;
                 break;
             case '政策学部':
-                $course = 'policy';
+                $course = 'policy'.$subject_year;
                 break;
             case '文化情報学部':
-                $course = 'culture_info';
+                $course = 'culture_info'.$subject_year;
                 break;
             case '社会学部':
-                $course = 'social';
+                $course = 'social'.$subject_year;
                 break;
             case '生命医科学部':
-                $course = 'biology';
+                $course = 'biology'.$subject_year;
                 break;
             case 'スポーツ健康科学部':
-                $course = 'sport';
+                $course = 'sport'.$subject_year;
                 break;
             case '理工学部':
-                $course = 'engineering';
+                $course = 'engineering'.$subject_year;
                 break;
             case '心理学部':
-                $course = 'psychology';
+                $course = 'psychology'.$subject_year;
                 break;
             case 'グローバル・コミュニケーション学部':
-                $course = 'glo_com';
+                $course = 'glo_com'.$subject_year;
                 break;
             case 'グローバル＿地域文化学部':
-                $course = 'glo_rigion';
+                $course = 'glo_rigion'.$subject_year;
                 break;
             case '一般教養科目':
-                $course = 'general';
+                $course = 'general'.$subject_year;
                 break;
             case '保健体育科目':
-                $course = 'health';
+                $course = 'health'.$subject_year;
                 break;
             case '外国語科目':
-                $course = 'language';
+                $course = 'language'.$subject_year;
                 break;
         }
     }
@@ -93,6 +97,7 @@ try{
     $stmt->execute($data);
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $subject_semester = $rec['semester'];
     $subject_name = $rec['name'];
     $subject_registers = $rec['registers'];
@@ -105,12 +110,14 @@ try{
     $per_get_credit = floatval($subject_a) + floatval($subject_b) + floatval($subject_c) + floatval($subject_d);
 
     $pdo = null;
+
 }
 catch(PDOException $e){
     print 'ただいま通信障害により大変ご迷惑をおかけしております。';
     exit();
 }
 ?>
+
 科目名:<?php print $subject_name ?><br>
 <?php print $subject_semester ?>学期<br>
 登録者数:<?php print $subject_registers ?><br>

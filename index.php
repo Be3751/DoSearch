@@ -23,6 +23,14 @@
             <div class="col-md">
                 <form action='model.php' method="get">
                     <div class="form-group">
+                        <label>年度：</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="year">
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>科目コード：</label>
                         <input type="text" class="form-control" placeholder="01234567" name="code">
                     </div>
@@ -30,13 +38,9 @@
                         <label>科目名：</label>
                         <input type="text" class="form-control" placeholder="あいうえお" name="name">
                     </div>
-                    <!-- <div class="form-group">
-                        <label>担当者名：</label>
-                        <input type="text" class="form-control" placeholder="田中 太郎" name="teacher">
-                    </div>
                     <div class="form-group">
                         <label>学部：</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" id="exampleFormControlSelect1" name="course">
                             <option>神学部</option>
                             <option>文学部</option>
                             <option>法学部</option>
@@ -55,50 +59,20 @@
                             <option>保健体育科目</option>
                             <option>外国語科目</option>
                         </select>
-                    </div> -->
-                    <!-- <div class="form-group">
-                        <label>住所：</label>
-                        <input type="text" class="form-control" placeholder="神奈川県〇〇市〇〇区〇〇〇町X-X-X 侍ビル1 XXX号室">
                     </div>
-                    <div class="form-group">
-                        <label>電話番号：</label>
-                        <input type="text" class="form-control" placeholder="XXX-XXXX-XXXX">
-                    </div>
-                    <div class="form-group">
-                        <label>補足：</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                    </div> -->
                     <div class="row center-block text-center">
                         <div class="col-1">
                         </div>
                         <div class="col-5">
-                            <form action="model.php" method="post">
-                                <input type="submit" class="btn btn-outline-primary btn-block" value="検索">
-                            </form>
+                            <input type="submit" class="btn btn-outline-primary btn-block" value="検索">
                         </div>
                         <div class="col-5">
                             <input type="reset" class="btn btn-outline-secondary btn-block" value="クリア">
                         </div>
                     </div>
-                    <div class="col-1">
-                    </div>
                 </form>
             </div>
         </div>
-        <!-- <div class="row center-block text-center">
-            <div class="col-1">
-            </div>
-            <div class="col-5">
-                <form action="model.php" method="post">
-                    <input type="submit" class="btn btn-outline-primary btn-block" value="検索">
-                </form>
-            </div>
-            <div class="col-5">
-                <input type="reset" class="btn btn-outline-secondary btn-block" value="クリア">
-            </div>
-        </div>
-        <div class="col-1">
-        </div> -->
         <br>
     </div>
 
@@ -108,7 +82,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <!-- <?php include_once('model.php'); ?> -->
 </body>
  
 </html>
