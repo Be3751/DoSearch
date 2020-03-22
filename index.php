@@ -31,14 +31,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>科目コード：</label>
-                        <input type="text" class="form-control" placeholder="01234567" name="code">
-                    </div>
-                    <div class="form-group">
-                        <label>科目名：</label>
-                        <input type="text" class="form-control" placeholder="あいうえお" name="name">
-                    </div>
-                    <div class="form-group">
                         <label>学部：</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="course">
                             <option>神学部</option>
@@ -59,6 +51,14 @@
                             <option>保健体育科目</option>
                             <option>外国語科目</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>科目コード：</label>
+                        <input type="text" class="form-control" placeholder="01234567" name="code">
+                    </div>
+                    <div class="form-group">
+                        <label>科目名：</label>
+                        <input type="text" class="form-control" placeholder="あいうえお" name="name">
                     </div>
                     <div class="row center-block text-center">
                         <div class="col-1">
