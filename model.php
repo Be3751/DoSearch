@@ -118,6 +118,7 @@ catch(PDOException $e){
 }
 ?>
 
+年度:<?php print $subject_year ?><br>
 科目名:<?php print $subject_name ?><br>
 <?php print $subject_semester ?>学期<br>
 登録者数:<?php print $subject_registers ?><br>
