@@ -1,25 +1,31 @@
-<!doctype html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Do-Search</title>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <canvas id="myBarChart"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-</head>
-
-<body>
-
 <?php
-include_once('config/database.php');
 
 try{
+    $rec = get_record();
+    $subject_semester = $rec['semester'];
+    $subject_name = $rec['name'];
+    $subject_registers = $rec['registers'];
+    $subject_a = $rec['a'];
+    $subject_b = $rec['b'];
+    $subject_c = $rec['c'];
+    $subject_d = $rec['d'];
+    $subject_f = $rec['f'];
+    // floatvalで浮動小数点に変換
+    $per_get_credit = floatval($subject_a) + floatval($subject_b) + floatval($subject_c) + floatval($subject_d);
+
+    $pdo = null;
+
+}
+catch(PDOException $e){
+    print 'ただいま通信障害により大変ご迷惑をおかけしております。';
+    exit();
+}
+
+function get_record(){
     // if(isset($_GET['code']) and isset($_GET['name'])){
     //     $sql = "SELECT semester,registers,a,b,c,d,f FROM theology WHERE code=? AND name=? ";
     // }
+
     if(isset($_GET['year'])){
         $subject_year = $_GET['year'];
     }
@@ -79,7 +85,7 @@ try{
                 break;
         }
     }
-
+    // コードと名前の両方が入力された際の処理が必要
     if(isset($_GET['code'])){
         $subject_code = $_GET['code'];
         $sql = "SELECT semester,name,registers,a,b,c,d,f FROM $course WHERE code=? ";
@@ -89,6 +95,7 @@ try{
         $sql = "SELECT code,semester,registers,a,b,c,d,f FROM $course WHERE name=? ";
     }
 
+    require_once('config/database.php');
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8","$username","$password");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -98,25 +105,25 @@ try{
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $subject_semester = $rec['semester'];
-    $subject_name = $rec['name'];
-    $subject_registers = $rec['registers'];
-    $subject_a = $rec['a'];
-    $subject_b = $rec['b'];
-    $subject_c = $rec['c'];
-    $subject_d = $rec['d'];
-    $subject_f = $rec['f'];
-    // floatvalで浮動小数点に変換
-    $per_get_credit = floatval($subject_a) + floatval($subject_b) + floatval($subject_c) + floatval($subject_d);
-
-    $pdo = null;
-
+    return $rec;
 }
-catch(PDOException $e){
-    print 'ただいま通信障害により大変ご迷惑をおかけしております。';
-    exit();
-}
+
 ?>
+
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Do-Search</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <canvas id="myBarChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+</head>
+
+<body>
 
 年度:<?php print $subject_year ?><br>
 科目名:<?php print $subject_name ?><br>
