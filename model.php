@@ -2,6 +2,7 @@
 
 try{
     $rec = get_record();
+    $subject_year = $_GET['year'];
     $subject_semester = $rec['semester'];
     $subject_name = $rec['name'];
     $subject_registers = $rec['registers'];
