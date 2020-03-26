@@ -130,16 +130,16 @@ function h($str){
 
 <body>
 
-年度:<?php print $subject_year ?><br>
-科目名:<?php print $subject_name ?><br>
-<?php print $subject_semester ?>学期<br>
-登録者数:<?php print $subject_registers ?><br>
-単位取得率:<?php print $per_get_credit ?>%<br>
-A:<?php print $subject_a ?>%,
-B:<?php print $subject_b ?>%,
-C:<?php print $subject_c ?>%,
-D:<?php print $subject_d ?>%,
-F:<?php print $subject_f ?>%<br>
+年度:<?php print h($subject_year) ?><br>
+科目名:<?php print h($subject_name) ?><br>
+<?php print h($subject_semester) ?>学期<br>
+登録者数:<?php print h($subject_registers) ?><br>
+単位取得率:<?php print h($per_get_credit) ?>%<br>
+A:<?php print h($subject_a) ?>%,
+B:<?php print h($subject_b) ?>%,
+C:<?php print h($subject_c) ?>%,
+D:<?php print h($subject_d) ?>%,
+F:<?php print h($subject_f) ?>%<br>
 <a href='index.php' id = 'backbutton'>検索画面に戻る</a>
 
 <script>
