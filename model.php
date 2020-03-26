@@ -109,6 +109,10 @@ function get_record(){
     return $rec;
 }
 
+function h($str){
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
 ?>
 
 <!doctype html>
@@ -139,14 +143,14 @@ F:<?php print $subject_f ?>%<br>
 <a href='index.php' id = 'backbutton'>検索画面に戻る</a>
 
 <script>
-    var subject_name = '<?php echo htmlspecialchars($subject_name, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_semester = '<?php echo htmlspecialchars($subject_semester, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_registers = '<?php echo htmlspecialchars($subject_registers, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_a = '<?php echo htmlspecialchars($subject_a, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_b = '<?php echo htmlspecialchars($subject_b, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_c = '<?php echo htmlspecialchars($subject_c, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_d = '<?php echo htmlspecialchars($subject_d, ENT_QUOTES, 'UTF-8'); ?>';
-    var subject_f = '<?php echo htmlspecialchars($subject_f, ENT_QUOTES, 'UTF-8'); ?>';
+    var subject_name = '<?php echo h($subject_name); ?>';
+    var subject_semester = '<?php echo h($subject_semester); ?>';
+    var subject_registers = '<?php echo h($subject_registers); ?>';
+    var subject_a = '<?php echo h($subject_a); ?>';
+    var subject_b = '<?php echo h($subject_b); ?>';
+    var subject_c = '<?php echo h($subject_c); ?>';
+    var subject_d = '<?php echo h($subject_d); ?>';
+    var subject_f = '<?php echo h($subject_f); ?>';
 
     var ctx = document.getElementById("myBarChart");
     var myBarChart = new Chart(ctx, {
