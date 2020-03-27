@@ -12,10 +12,11 @@
  
 <body>
 <br>
-    <h1 id="top-title">科目成績データ検索システム Do-Search </h1>
+    <h2 id="top-title">科目成績データ検索システム</h2>
+    <h1 id="top-title">Do-Search </h1>
     <br>
  
-    <div class="border col-7" id="main">
+    <div class="border col-11" id="main">
         <br>
         <h2><i class="fas fa-search"></i> データ検索</h2>
         <br>
