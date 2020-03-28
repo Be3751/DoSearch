@@ -12,7 +12,7 @@
  
 <body>
 <br>
-    <h2 id="top-title">科目成績データ検索システム</h2>
+    <h2 id="top-title">科目検索システム for 同志社</h2>
     <h1 id="top-title">Do-Search </h1>
     <br>
  
@@ -22,7 +22,7 @@
         <br>
         <div class="row">
             <div class="col-md">
-                <form action='model.php' method="get">
+                <form action='result.php' method="get">
                     <div class="form-group">
                         <label>年度：</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="year">
