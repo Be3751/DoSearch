@@ -29,20 +29,34 @@ function get_record($course ,$subject_code, $subject_name){
 
     return $stmt;
 }
-function make_datalist($stmt){
+function make_datalist($course, $stmt){
     while($record = $stmt->fetch()){
-        echo '<div class="border row col-11 items" onclick="window.open("data.php", "_blank")">';
+        echo '<div class="border row col-11 items">';
         echo '<div class="col-md-10">';
         echo '<br>';
         echo '<div class="col-md-10">';
         echo '<h4>'.$record['name'].'</h4>';
         echo '科目コード:'.$record['code'].'<br>';
-        echo '単位取得率:'.$record['get_point'].'%';
+        echo '単位取得率:'.$record['get_point'].'%<br>';
+        echo '<form method="get" action="data.php">';
+        echo '<input type="hidden" name="code" value="'.$record['code'].'">';
+        echo '<input type="hidden" name="course" value="'.$course.'">';
+        echo '<input type="submit" value="詳細を見る">';
+        echo '</form>';
         echo '</div>';
         echo '<br>';
         echo '</div>';
         echo '</div>';
         echo '<br>';
+    }
+}
+function show_data(){
+    header('Location:data.php');
+    exit();
+}
+function sort_get_point($order){
+    if($order==''){
+
     }
 }
 ?>
@@ -69,6 +83,7 @@ function make_datalist($stmt){
             <br>
             <h2><i class="fas fa-search"></i> 検索結果一覧</h2>
         <br>
+        <?php echo '<h3>'.$subject_year.'</h3>' ?>
         <?php 
             try{
                 $subject_year = $_GET['year'];
@@ -136,7 +151,7 @@ function make_datalist($stmt){
             
                 $stmt = get_record($course, $subject_code, $subject_name);
                 
-                make_datalist($stmt);
+                make_datalist($course ,$stmt);
             }
             catch(PDOException $e){
                 print '接続に失敗しました。';
