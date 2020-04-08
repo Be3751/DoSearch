@@ -71,7 +71,7 @@ B:<?php print h($subject_b) ?>%,
 C:<?php print h($subject_c) ?>%,
 D:<?php print h($subject_d) ?>%,
 F:<?php print h($subject_f) ?>%<br>
-<a href='result.php' id = 'backbutton_result'>検索結果一覧に戻る</a>
+<a href='result.php' id = 'backbutton_result'>検索結果一覧に戻る</a><br>
 <a href='index.php' id = 'backbutton_index'>検索機能に戻る</a>
 
 <script>
