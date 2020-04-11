@@ -82,8 +82,6 @@ function sort_get_point($order){
         <div class="border col-11" id="main">
             <br>
             <h2><i class="fas fa-search"></i> 検索結果一覧</h2>
-        <br>
-        <?php echo '<h3>'.$subject_year.'</h3>' ?>
         <?php 
             try{
                 $subject_year = $_GET['year'];
@@ -148,9 +146,11 @@ function sort_get_point($order){
                 if(isset($_GET['name'])){
                     $subject_name = $_GET['name'];
                 }
-            
+                
                 $stmt = get_record($course, $subject_code, $subject_name);
                 
+                $count = $stmt->rowCount();
+                echo '<h3>'.$subject_year.'年度 '.$count.'件</h3>';
                 make_datalist($course ,$stmt);
             }
             catch(PDOException $e){
