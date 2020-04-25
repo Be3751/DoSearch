@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_regenerate_id(true);
+?>
 <!doctype html>
 <html lang="ja">
 <head>
@@ -15,7 +19,8 @@
     <h2 id="top-title">科目検索システム for 同志社</h2>
     <h1 id="top-title">Do-Search </h1>
     <br>
- 
+    <a href='favorite.php'>お気に入り一覧を見る</a>
+    <br>
     <div class="border col-11" id="main">
         <br>
         <h2><i class="fas fa-search"></i> データ検索</h2>

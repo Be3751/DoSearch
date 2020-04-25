@@ -1,0 +1,15 @@
+$(function(){
+    $(".heart").click(function(){
+        $(this).toggleClass("clicked");
+        if($(this).hasClass('far')){
+            $(this).removeClass('far');
+            $(this).addClass('fas');
+            $(this).css('color','#e54747');
+        }
+        else{
+            $(this).removeClass('fas');
+            $(this).addClass('far');
+            $(this).css('color','grey');
+        }
+    });
+});

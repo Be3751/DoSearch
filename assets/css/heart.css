@@ -1,0 +1,20 @@
+.heart{
+    color:grey;
+    margin: 10px auto;
+    font-size: 1.5em;
+}
+.heart.clicked{
+    color:#e54747;
+    margin: 10px auto;
+    font-size: 1.5em;
+    animation: anime1 3s reverse;
+    animation-iteration-count: 1;
+}
+@keyframes anime1{
+    0% { transform: scale(1); }
+    60% { transform: scale(1); }
+    70% { transform: scale(1.3); }
+    80% { transform: scale(1); }
+    90% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}

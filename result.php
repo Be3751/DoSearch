@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_regenerate_id(true);
 function get_record($course ,$subject_code, $subject_name){
     // コードと名前の両方が入力された際は、コードを優先すればよい
     // PDO::prepare→PDOStatement::bindValue→PDOStatement::executeの3ステップでクエリを実行
@@ -30,12 +32,14 @@ function get_record($course ,$subject_code, $subject_name){
     return $stmt;
 }
 function make_datalist($course, $stmt){
+    $cnt = 0;
     while($record = $stmt->fetch()){
         echo '<div class="border row col-11 items">';
         echo '<div class="col-md-10">';
         echo '<br>';
         echo '<div class="col-md-10">';
-        echo '<h4>'.$record['name'].'</h4>';
+        echo '<h4 style="display:inline;">'.$record['name'].'</h4>';
+        echo '<i class="far fa-heart heart" id="heart'.$cnt.'" onclick="memo_fav("'.$record['code'].'")"></i><br>';
         echo '科目コード:'.$record['code'].'<br>';
         echo '単位取得率:'.$record['get_point'].'%<br>';
         echo '<form method="get" action="data.php">';
@@ -48,16 +52,22 @@ function make_datalist($course, $stmt){
         echo '</div>';
         echo '</div>';
         echo '<br>';
+        $cnt+=1;
     }
 }
-function show_data(){
-    header('Location:data.php');
-    exit();
-}
-function sort_get_point($order){
+function sort_bygp($order){
     if($order==''){
 
     }
+}
+function memo_fav($code){
+    $_SESSION['favorite']=$code;
+    console_log($code);
+}
+function console_log($str){
+    echo '<script>';
+    echo 'console.log('.json_encode($str).')';
+    echo '</script>';
 }
 ?>
 
@@ -70,7 +80,10 @@ function sort_get_point($order){
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/result.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <link rel="stylesheet" href="assets/css/heart.css">
+        <script src="https://kit.fontawesome.com/57b4dccf18.js" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="assets/js/heart_action.js"></script>
     </head>
 
     <body>
@@ -78,7 +91,8 @@ function sort_get_point($order){
         <h2 id="top-title">科目検索システム for 同志社</h2>
         <h1 id="top-title">Do-Search </h1>
         <br>
-        <a href='index.php' id = 'backbutton'>検索画面に戻る</a>
+        <a href='index.php' id = 'backbutton_index'>検索機能に戻る</a><br>
+        <a href='favorite.php'>お気に入り一覧を見る</a>
         <div class="border col-11" id="main">
             <br>
             <h2><i class="fas fa-search"></i> 検索結果一覧</h2>
