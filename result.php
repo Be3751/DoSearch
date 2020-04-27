@@ -34,6 +34,7 @@ function get_record($course ,$subject_code, $subject_name){
 function make_datalist($course, $stmt){
     $cnt = 0;
     while($record = $stmt->fetch()){
+        $get_point = floor($record['get_point']*10)/10;
         echo '<div class="border row col-11 items">';
         echo '<div class="col-md-10">';
         echo '<br>';
@@ -41,7 +42,7 @@ function make_datalist($course, $stmt){
         echo '<h4 style="display:inline;">'.$record['name'].'</h4>';
         echo '<i class="far fa-heart heart" id="heart'.$cnt.'" onclick="memo_fav("'.$record['code'].'")"></i><br>';
         echo '科目コード:'.$record['code'].'<br>';
-        echo '単位取得率:'.$record['get_point'].'%<br>';
+        echo '単位取得率:'.$get_point.'%<br>';
         echo '<form method="get" action="data.php">';
         echo '<input type="hidden" name="code" value="'.$record['code'].'">';
         echo '<input type="hidden" name="course" value="'.$course.'">';
